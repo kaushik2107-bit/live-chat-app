@@ -97,7 +97,7 @@ export default function MainPage({ userInfo }) {
 	}
 
 	return (
-		<div className="border-solid  p-2 m-2 rounded-md h-[85vh] max-w-[100vw] bg-[#373952]">
+		<div className="border-solid  p-2 m-2 rounded-md h-[95vh] max-w-[100vw] bg-[#373952]">
 			<div id="header" className="flex p-4 items-center w-[100%] h-[10%] bg-[#373952] border-b-2 border-solid border-[#555555] ">
 				<p className="text-gray-300 text-lg">#General Chat Room</p>
 				<button onClick={logout} className="ml-auto bg-white text-black p-2 w-20 rounded-md hover:bg-red-700 hover:text-white">Logout</button>
