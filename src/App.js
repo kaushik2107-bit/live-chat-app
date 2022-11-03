@@ -15,15 +15,15 @@ function App() {
       const { data } = await axios.get(url, { crossDomain: true, withCredentials: true })
       setUser(data.user._json)
       console.log(user)
-      // sessionStorage.setItem("name", data.user._json.name)
-      // sessionStorage.setItem("email", data.user._json.email)
     } catch (error) {
       console.log(error)
     }
   }
 
   useEffect(() => {
-    getUser();
+    if (localStorage.getItem('name') && localStorage.getItem('email'))
+      setUser({name: localStorage.getItem("name"), email: localStorage.getItem("email")})
+    // getUser();
   }, [])
 
   return (

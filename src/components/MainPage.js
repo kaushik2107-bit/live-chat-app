@@ -13,8 +13,12 @@ socket.on("disconnect", () => {
 
 export default function MainPage({ userInfo }) {
 	const REACT_APP_API_URL = "https://live-socket-chat-app.herokuapp.com"
-	const name = sessionStorage.getItem("name")
-	const email = sessionStorage.getItem("email")
+	const name = localStorage.getItem("name")
+	const email = localStorage.getItem("email")
+
+	if (!name && !email) {
+		window.location.href = "/"
+	}
 
 	const [messageValue, setMessageValue] = useState("")
 	const [messages, setMessages] = useState([])
@@ -51,7 +55,7 @@ export default function MainPage({ userInfo }) {
 
 		axios.post("https://live-socket-chat-app.herokuapp.com/api/message", {name: name, email: email, message: messageValue})
 		.then(console.log("Send Successfully"))
-		.then(socket.emit("messageSent", name, email, messageValue))
+		.then(socket.emit("messageSent", name, email, messageValue, Date.now))
 		.catch(err => console.log(err))
 	}
 
@@ -76,8 +80,8 @@ export default function MainPage({ userInfo }) {
 
 	
 	useEffect(() => {
-		socket.on("messageRecieved", (name, email, message) => {
-			const item = {name: name, email: email, message: message}
+		socket.on("messageRecieved", (name, email, message, date) => {
+			const item = {name: name, email: email, message: message, created_on: date}
 			return (
 				setMessages(prev => [item, ...prev])
 			)
@@ -88,9 +92,9 @@ export default function MainPage({ userInfo }) {
 	let counter = 0;
 
 	const logout = () => {
-		sessionStorage.removeItem("name")
-		sessionStorage.removeItem("email")
-		window.open(`${REACT_APP_API_URL}/auth/logout`, "_self")
+		localStorage.removeItem("name")
+		localStorage.removeItem("email")
+		window.open(`/`, "_self")
 	}
 
 	return (
