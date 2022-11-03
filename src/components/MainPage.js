@@ -48,14 +48,14 @@ export default function MainPage({ userInfo }) {
 	const handleSendMessage = (e) => {
 		e.preventDefault();
 		let array = [...messages];
-		array.unshift({name: name, email: email, message: messageValue})
+		array.unshift({name: name, email: email, message: messageValue, created_on: new Date().toISOString() })
 		setMessages(array)
 		setMessageValue("")
 		reRender(value => !value)
 
 		axios.post("https://live-socket-chat-app.herokuapp.com/api/message", {name: name, email: email, message: messageValue})
-		.then(console.log("Send Successfully"))
-		.then(socket.emit("messageSent", name, email, messageValue, Date.now))
+		.then(console.log("Send Successfully", new Date() ))
+		.then(socket.emit("messageSent", name, email, messageValue, Date.now().toISOString() ))
 		.catch(err => console.log(err))
 	}
 
