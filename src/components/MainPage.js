@@ -3,7 +3,7 @@ import { io } from "socket.io-client"
 import axios from "axios"
 import useInfiniteScrolling from "./useInfiniteScrolling"
 
-const socket = io("http://localhost:8000")
+const socket = io("https://live-socket-chat-app.herokuapp.com/")
 socket.on("connect", () => {
 	console.log(`You connected with id ${socket.id}`)
 })

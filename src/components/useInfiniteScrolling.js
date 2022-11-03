@@ -14,7 +14,7 @@ export default function useInfiniteScrolling(pageNumber) {
 	useEffect(() => {
 		setLoading(true)
 		setError(false)
-		axios.get(`http://localhost:8000/api/fetch/${pageNumber}`)
+		axios.get(`https://live-socket-chat-app.herokuapp.com/api/fetch/${pageNumber}`)
 		.then(res => {
 			setMsg(prev => {
 				return [...prev, ...res.data.data]
