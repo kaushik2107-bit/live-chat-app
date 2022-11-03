@@ -14,8 +14,9 @@ function App() {
       const url = `${REACT_APP_API_URL}/auth/login/success`
       const { data } = await axios.get(url, { crossDomain: true, withCredentials: true })
       setUser(data.user._json)
-      sessionStorage.setItem("name", data.user._json.name)
-      sessionStorage.setItem("email", data.user._json.email)
+      console.log(user)
+      // sessionStorage.setItem("name", data.user._json.name)
+      // sessionStorage.setItem("email", data.user._json.email)
     } catch (error) {
       console.log(error)
     }

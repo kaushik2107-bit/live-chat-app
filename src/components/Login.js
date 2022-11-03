@@ -7,8 +7,6 @@ export default function Login() {
 		window.open(`${REACT_APP_API_URL}/auth/google/callback`, "_self")
 	}
 
-
-
 	return (
 		<div className="flex w-[252px] h-[58px] bg-blue-600 items-center rounded-lg m-auto mt-[45vh] cursor-pointer" onClick={googleAuth}>
 			<div 
