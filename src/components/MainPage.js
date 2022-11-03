@@ -5,10 +5,10 @@ import useInfiniteScrolling from "./useInfiniteScrolling"
 
 const socket = io("https://live-socket-chat-app.herokuapp.com/")
 socket.on("connect", () => {
-	console.log(`You connected with id ${socket.id}`)
+	// console.log(`You connected with id ${socket.id}`)
 })
 socket.on("disconnect", () => {
-	console.log(`You disconnected with id ${socket.id}`)
+	// console.log(`You disconnected with id ${socket.id}`)
 })
 
 export default function MainPage({ userInfo }) {
@@ -54,7 +54,6 @@ export default function MainPage({ userInfo }) {
 		reRender(value => !value)
 
 		axios.post("https://live-socket-chat-app.herokuapp.com/api/message", {name: name, email: email, message: messageValue})
-		.then(console.log("Send Successfully", new Date() ))
 		.then(socket.emit("messageSent", name, email, messageValue, Date.now() ))
 		.catch(err => console.log(err))
 	}
