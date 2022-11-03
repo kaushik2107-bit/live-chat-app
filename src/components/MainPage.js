@@ -12,7 +12,7 @@ socket.on("disconnect", () => {
 })
 
 export default function MainPage({ userInfo }) {
-	const REACT_APP_API_URL = "https://live-socket-chat-app.herokuapp.com/"
+	const REACT_APP_API_URL = "https://live-socket-chat-app.herokuapp.com"
 	const name = sessionStorage.getItem("name")
 	const email = sessionStorage.getItem("email")
 

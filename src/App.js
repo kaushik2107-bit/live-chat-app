@@ -7,7 +7,7 @@ import axios from "axios"
 
 function App() {
   const [user, setUser] = useState(null);
-  const REACT_APP_API_URL = "https://live-socket-chat-app.herokuapp.com/"
+  const REACT_APP_API_URL = "https://live-socket-chat-app.herokuapp.com"
 
   const getUser = async () => {
     try {

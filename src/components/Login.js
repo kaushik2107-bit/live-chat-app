@@ -1,7 +1,7 @@
 import React from "react"
 
 export default function Login() {
-	const REACT_APP_API_URL = "https://live-socket-chat-app.herokuapp.com/"
+	const REACT_APP_API_URL = "https://live-socket-chat-app.herokuapp.com"
 	const googleAuth = () => {
 		window.open(`${REACT_APP_API_URL}/auth/google/callback`, "_self")
 	}
